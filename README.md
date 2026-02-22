@@ -25,8 +25,8 @@ We are a dedicated group of students from **CMRCET (Malla Reddy College of Engin
 | Role | Name | Campus |
 |------|------|--------|
 | **Team Lead / Dev** | [Krishna Koushik](https://github.com/krishnakoushik9) | CMRCET |
-| **Security Analyst** | KavyaSri | CMRCET |
-| **UI/UX & Research** | Aishwarya | CMRCET |
+| **Security Analyst** | KavyaSri (Potato)| CMRCET |
+| **UI/UX & Research** | Aishwarya (Aish) | CMRCET |
 
 ---
 
