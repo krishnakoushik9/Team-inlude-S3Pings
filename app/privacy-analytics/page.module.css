@@ -1,0 +1,219 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+}
+
+.privacyBadge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: rgba(163, 190, 140, 0.08);
+    border: 1px solid rgba(163, 190, 140, 0.2);
+    border-radius: 12px;
+    color: var(--color-accent-green);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.statCard {
+    padding: 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.statValue {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-accent-blue);
+}
+
+.statLabel {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+}
+
+.statNote {
+    font-size: 0.7rem;
+    color: var(--color-accent-green);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.section {
+    background: var(--color-surface);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.section h2 {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.labGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.labCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: var(--color-bg);
+    border-radius: 10px;
+    border: 1px solid rgba(136, 192, 208, 0.1);
+}
+
+.labInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.labIcon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(136, 192, 208, 0.1);
+    color: var(--color-accent-blue);
+}
+
+.labName {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.labSub {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.labStats {
+    text-align: right;
+}
+
+.labCount {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-accent-blue);
+}
+
+.labPrivacy {
+    font-size: 0.7rem;
+    color: var(--color-accent-green);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.barChart {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.barItem {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.barLabel {
+    width: 80px;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.barTrack {
+    flex: 1;
+    height: 24px;
+    background: var(--color-bg);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.barFill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--color-accent-blue), var(--color-accent-cyan));
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.5rem;
+    font-size: 0.7rem;
+    color: var(--color-bg);
+    font-weight: 600;
+    transition: width 0.5s ease;
+}
+
+.infoBox {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(136, 192, 208, 0.05);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.infoBox svg {
+    flex-shrink: 0;
+    color: var(--color-accent-blue);
+    margin-top: 2px;
+}

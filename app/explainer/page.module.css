@@ -1,0 +1,233 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-warning) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+}
+
+.searchSection {
+    background: var(--color-surface);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.searchBox {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.searchInput {
+    flex: 1;
+    padding: 0.85rem 1rem;
+    background: var(--color-bg);
+    border: 1px solid rgba(136, 192, 208, 0.15);
+    border-radius: 10px;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--color-accent-blue);
+}
+
+.searchBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    background: linear-gradient(135deg, var(--color-warning), var(--color-orange));
+    color: var(--color-bg);
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.searchBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(235, 203, 139, 0.3);
+}
+
+.searchBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.resultCard {
+    background: var(--color-surface);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.resultTitle {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.resultGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 768px) {
+    .resultGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.infoBlock {
+    padding: 1rem;
+    background: var(--color-bg);
+    border-radius: 10px;
+    border: 1px solid rgba(136, 192, 208, 0.1);
+}
+
+.infoBlock h4 {
+    font-size: 0.85rem;
+    color: var(--color-accent-blue);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.infoBlock p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.riskMeter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.riskBar {
+    flex: 1;
+    height: 8px;
+    background: var(--color-bg);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.riskFill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.riskFill.low {
+    width: 33%;
+    background: var(--color-accent-green);
+}
+
+.riskFill.medium {
+    width: 66%;
+    background: var(--color-warning);
+}
+
+.riskFill.high {
+    width: 100%;
+    background: var(--color-danger);
+}
+
+.riskLabel {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.riskLabel.low {
+    color: var(--color-accent-green);
+}
+
+.riskLabel.medium {
+    color: var(--color-warning);
+}
+
+.riskLabel.high {
+    color: var(--color-danger);
+}
+
+.quickTerms {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.termChip {
+    padding: 0.4rem 0.8rem;
+    background: rgba(136, 192, 208, 0.1);
+    border: 1px solid rgba(136, 192, 208, 0.15);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: var(--color-accent-blue);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.termChip:hover {
+    background: rgba(136, 192, 208, 0.2);
+    border-color: var(--color-accent-blue);
+}
+
+.loadingSpinner {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+}
+
+.loadingSpinner svg {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

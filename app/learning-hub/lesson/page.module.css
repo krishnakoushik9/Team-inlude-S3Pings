@@ -1,0 +1,397 @@
+.lessonPage {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeIn 0.4s ease;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── Top Nav Bar ─── */
+.topNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0;
+}
+
+.backLink {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.2s;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+}
+
+.backLink:hover {
+    color: var(--color-purple);
+}
+
+.lessonBreadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.lessonBreadcrumb span {
+    color: var(--color-purple);
+    font-weight: 600;
+}
+
+/* ─── Progress Indicator ─── */
+.progressBar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--color-surface);
+    border-radius: 12px;
+    border: 1px solid rgba(136, 192, 208, 0.08);
+}
+
+.progressDots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(136, 192, 208, 0.15);
+    border: 2px solid rgba(136, 192, 208, 0.2);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.dot.completed {
+    background: var(--color-accent-green);
+    border-color: var(--color-accent-green);
+}
+
+.dot.current {
+    background: var(--color-purple);
+    border-color: var(--color-purple);
+    box-shadow: 0 0 8px rgba(180, 142, 173, 0.4);
+}
+
+.progressLabel {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-left: auto;
+}
+
+/* ─── Lesson Header ─── */
+.lessonHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.lessonHeader h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.moduleBadge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* ─── Notes Panel ─── */
+.notesPanel {
+    background: var(--color-surface);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    line-height: 1.7;
+}
+
+/* ─── Quiz Section ─── */
+.quizSection {
+    background: var(--color-surface);
+    border: 1px solid rgba(180, 142, 173, 0.15);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.quizTitle {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-text);
+}
+
+.questionCard {
+    background: var(--color-bg);
+    border: 1px solid rgba(136, 192, 208, 0.08);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.questionText {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+.questionNumber {
+    font-size: 0.75rem;
+    color: var(--color-purple);
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.optionsGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.optionBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--color-surface);
+    border: 1px solid rgba(136, 192, 208, 0.12);
+    border-radius: 10px;
+    color: var(--color-text);
+    font-size: 0.88rem;
+    line-height: 1.4;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.optionBtn:hover:not(.selected) {
+    border-color: var(--color-purple);
+    background: rgba(180, 142, 173, 0.05);
+}
+
+.optionBtn.correct {
+    border-color: var(--color-accent-green);
+    background: rgba(163, 190, 140, 0.1);
+    color: var(--color-accent-green);
+}
+
+.optionBtn.wrong {
+    border-color: var(--color-danger);
+    background: rgba(191, 97, 106, 0.1);
+    color: var(--color-danger);
+}
+
+.optionBtn.dimmed {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.optionBtn.selected {
+    cursor: default;
+}
+
+.optionLetter {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(136, 192, 208, 0.1);
+    font-weight: 700;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+}
+
+.correct .optionLetter {
+    background: var(--color-accent-green);
+    color: white;
+}
+
+.wrong .optionLetter {
+    background: var(--color-danger);
+    color: white;
+}
+
+.explanationBox {
+    margin-top: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(136, 192, 208, 0.05);
+    border-left: 3px solid #88C0D0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+/* ─── Score Summary ─── */
+.scoreSummary {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--color-bg);
+    border-radius: 16px;
+    margin-top: 1rem;
+}
+
+.scoreCircle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    border: 4px solid;
+}
+
+.scoreCircle.pass {
+    border-color: var(--color-accent-green);
+    color: var(--color-accent-green);
+    background: rgba(163, 190, 140, 0.1);
+}
+
+.scoreCircle.fail {
+    border-color: var(--color-warning);
+    color: var(--color-warning);
+    background: rgba(235, 203, 139, 0.1);
+}
+
+.scoreSummary h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.scoreSummary p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+}
+
+/* ─── Buttons ─── */
+.completeBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-accent-green);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.completeBtn:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+}
+
+.retryBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-warning);
+    color: #2E3440;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    margin-left: 0.75rem;
+}
+
+.retryBtn:hover {
+    filter: brightness(1.1);
+}
+
+.navButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.navBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.25rem;
+    background: var(--color-surface);
+    border: 1px solid rgba(136, 192, 208, 0.15);
+    border-radius: 10px;
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    font-family: inherit;
+}
+
+.navBtn:hover {
+    background: var(--color-purple);
+    color: white;
+    border-color: var(--color-purple);
+}
+
+.navBtn:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+/* ─── Already Complete Badge ─── */
+.completedBanner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(163, 190, 140, 0.1);
+    border: 1px solid rgba(163, 190, 140, 0.2);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    color: var(--color-accent-green);
+    font-weight: 600;
+}

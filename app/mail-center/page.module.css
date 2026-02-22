@@ -1,0 +1,838 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    animation: fadeIn 0.4s ease;
+    height: calc(100vh - 80px);
+    overflow: hidden;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─── Top Bar ─── */
+.mailTopBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background: var(--color-surface);
+    border-bottom: 1px solid rgba(136, 192, 208, 0.08);
+    flex-shrink: 0;
+}
+
+.mailTopBar h1 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.mailTopBarActions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ─── Compose Button ─── */
+.composeBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    background: linear-gradient(135deg, var(--color-purple), #5E81AC);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.composeBtn:hover {
+    filter: brightness(1.15);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(180, 142, 173, 0.3);
+}
+
+.refreshBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--color-bg);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+    border-radius: 8px;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.refreshBtn:hover {
+    color: var(--color-purple);
+    border-color: var(--color-purple);
+}
+
+.refreshBtn.spinning svg {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ─── Main Content Area ─── */
+.mailBody {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ─── Inbox Sidebar ─── */
+.inboxPanel {
+    width: 380px;
+    min-width: 320px;
+    border-right: 1px solid rgba(136, 192, 208, 0.08);
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    overflow: hidden;
+}
+
+.inboxHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(136, 192, 208, 0.06);
+}
+
+.inboxHeader h3 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.inboxCount {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 10px;
+    background: rgba(180, 142, 173, 0.15);
+    color: var(--color-purple);
+    font-weight: 700;
+}
+
+.filterBar {
+    display: flex;
+    gap: 0.35rem;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid rgba(136, 192, 208, 0.06);
+    overflow-x: auto;
+}
+
+.filterChip {
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border: 1px solid rgba(136, 192, 208, 0.12);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    font-family: inherit;
+}
+
+.filterChip:hover {
+    border-color: var(--color-purple);
+    color: var(--color-text);
+}
+
+.filterChip.active {
+    background: var(--color-purple);
+    border-color: var(--color-purple);
+    color: white;
+}
+
+.emailList {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.emailList::-webkit-scrollbar {
+    width: 4px;
+}
+
+.emailList::-webkit-scrollbar-thumb {
+    background: rgba(136, 192, 208, 0.15);
+    border-radius: 4px;
+}
+
+/* ─── Email Item ─── */
+.emailItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(136, 192, 208, 0.04);
+    cursor: pointer;
+    transition: all 0.15s;
+    position: relative;
+}
+
+.emailItem:hover {
+    background: rgba(136, 192, 208, 0.04);
+}
+
+.emailItem.selected {
+    background: rgba(180, 142, 173, 0.08);
+    border-left: 3px solid var(--color-purple);
+}
+
+.emailItem.unread {
+    background: rgba(136, 192, 208, 0.03);
+}
+
+.emailItem.unread .emailSubject {
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.emailItem.phishing {
+    border-left: 3px solid var(--color-danger);
+}
+
+.emailItem.suspicious {
+    border-left: 3px solid var(--color-warning);
+}
+
+.emailItem.safe {
+    border-left: 3px solid var(--color-accent-green);
+}
+
+/* Safety badge */
+.safetyDot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+}
+
+.safetyDot.safe {
+    background: var(--color-accent-green);
+}
+
+.safetyDot.suspicious {
+    background: var(--color-warning);
+}
+
+.safetyDot.phishing {
+    background: var(--color-danger);
+}
+
+.safetyDot.unscanned {
+    background: rgba(136, 192, 208, 0.3);
+}
+
+.emailMeta {
+    flex: 1;
+    min-width: 0;
+}
+
+.emailSubject {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.15rem;
+}
+
+.emailSender {
+    font-size: 0.75rem;
+    color: rgba(136, 192, 208, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.emailTime {
+    font-size: 0.68rem;
+    color: rgba(136, 192, 208, 0.4);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.emailSafetyTag {
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.emailSafetyTag.safe {
+    background: rgba(163, 190, 140, 0.15);
+    color: var(--color-accent-green);
+}
+
+.emailSafetyTag.suspicious {
+    background: rgba(235, 203, 139, 0.15);
+    color: var(--color-warning);
+}
+
+.emailSafetyTag.phishing {
+    background: rgba(191, 97, 106, 0.15);
+    color: var(--color-danger);
+}
+
+/* ─── Reading Pane ─── */
+.readingPane {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.emptyState {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: var(--color-text-muted);
+    opacity: 0.5;
+}
+
+.emptyState p {
+    font-size: 0.9rem;
+}
+
+/* ─── Email Detail ─── */
+.emailDetail {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.emailDetailHeader {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(136, 192, 208, 0.08);
+    background: var(--color-surface);
+    flex-shrink: 0;
+}
+
+.emailDetailSubject {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+    line-height: 1.3;
+}
+
+.emailDetailMeta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.senderAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.senderInfo {
+    flex: 1;
+}
+
+.senderName {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.senderEmail {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+}
+
+.emailDate {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+}
+
+/* ─── AI Safety Banner ─── */
+.safetyBanner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    flex-shrink: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.safetyBanner.safe {
+    background: rgba(163, 190, 140, 0.08);
+    color: var(--color-accent-green);
+    border-bottom: 1px solid rgba(163, 190, 140, 0.15);
+}
+
+.safetyBanner.suspicious {
+    background: rgba(235, 203, 139, 0.08);
+    color: var(--color-warning);
+    border-bottom: 1px solid rgba(235, 203, 139, 0.15);
+}
+
+.safetyBanner.phishing {
+    background: rgba(191, 97, 106, 0.1);
+    color: var(--color-danger);
+    border-bottom: 1px solid rgba(191, 97, 106, 0.15);
+}
+
+.safetyReason {
+    font-weight: 400;
+    font-size: 0.8rem;
+    opacity: 0.85;
+    margin-left: 0.25rem;
+}
+
+.scanBtn {
+    margin-left: auto;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.scanBtn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ─── Email Body ─── */
+.emailBody {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+.emailBody::-webkit-scrollbar {
+    width: 4px;
+}
+
+.emailBody::-webkit-scrollbar-thumb {
+    background: rgba(136, 192, 208, 0.15);
+    border-radius: 4px;
+}
+
+.emailBodyContent {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: var(--color-text);
+    max-width: 700px;
+}
+
+.emailBodyContent p {
+    margin-bottom: 0.75rem;
+}
+
+/* ─── Email Actions Bar ─── */
+.emailActions {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-top: 1px solid rgba(136, 192, 208, 0.08);
+    background: var(--color-surface);
+    flex-shrink: 0;
+}
+
+.actionBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.85rem;
+    background: var(--color-bg);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+    border-radius: 8px;
+    color: var(--color-text-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.actionBtn:hover {
+    border-color: var(--color-purple);
+    color: var(--color-text);
+}
+
+.actionBtn.danger:hover {
+    border-color: var(--color-danger);
+    color: var(--color-danger);
+}
+
+/* ─── Setup Screen ─── */
+.setupOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    animation: fadeIn 0.3s ease;
+}
+
+.setupCard {
+    background: var(--color-surface);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 480px;
+    max-width: 95vw;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.setupCard h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.setupCard>p {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.formGroup {
+    margin-bottom: 1rem;
+}
+
+.formGroup label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.35rem;
+}
+
+.formGroup input,
+.formGroup select {
+    width: 100%;
+    padding: 0.65rem 0.85rem;
+    background: var(--color-bg);
+    border: 1px solid rgba(136, 192, 208, 0.12);
+    border-radius: 10px;
+    color: var(--color-text);
+    font-size: 0.88rem;
+    font-family: inherit;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+    border-color: var(--color-purple);
+}
+
+.formGroup input::placeholder {
+    color: rgba(136, 192, 208, 0.3);
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.presetBtns {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.presetBtn {
+    padding: 0.4rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid rgba(136, 192, 208, 0.15);
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.presetBtn:hover,
+.presetBtn.active {
+    border-color: var(--color-purple);
+    background: rgba(180, 142, 173, 0.1);
+    color: var(--color-purple);
+}
+
+.setupActions {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.connectBtn {
+    flex: 1;
+    padding: 0.75rem;
+    background: linear-gradient(135deg, var(--color-purple), #5E81AC);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.connectBtn:hover {
+    filter: brightness(1.1);
+}
+
+.connectBtn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.skipBtn {
+    padding: 0.75rem 1.25rem;
+    background: transparent;
+    border: 1px solid rgba(136, 192, 208, 0.15);
+    border-radius: 10px;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.skipBtn:hover {
+    border-color: var(--color-text-muted);
+}
+
+/* ─── Compose Modal ─── */
+.composeModal {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 520px;
+    max-width: 90vw;
+    background: var(--color-surface);
+    border: 1px solid rgba(136, 192, 208, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+    max-height: 80vh;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.composeHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1rem;
+    background: linear-gradient(135deg, var(--color-purple), #5E81AC);
+    border-radius: 16px 16px 0 0;
+    color: white;
+}
+
+.composeHeader h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    padding: 4px;
+    display: flex;
+}
+
+.closeBtn:hover {
+    opacity: 1;
+}
+
+.composeBody {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.composeField {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid rgba(136, 192, 208, 0.06);
+    padding-bottom: 0.5rem;
+}
+
+.composeField label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    min-width: 55px;
+}
+
+.composeField input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    font-size: 0.88rem;
+    font-family: inherit;
+    outline: none;
+}
+
+.composeTextarea {
+    flex: 1;
+    min-height: 120px;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    font-size: 0.88rem;
+    font-family: inherit;
+    line-height: 1.6;
+    resize: none;
+    outline: none;
+    margin-top: 0.5rem;
+}
+
+.composeFooter {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid rgba(136, 192, 208, 0.08);
+}
+
+.sendBtn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1.1rem;
+    background: linear-gradient(135deg, var(--color-accent-green), #8FBCBB);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+}
+
+.sendBtn:hover {
+    filter: brightness(1.1);
+}
+
+/* ─── Privacy Notice ─── */
+.privacyNotice {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+    color: var(--color-accent-green);
+    padding: 0.5rem 1.5rem;
+    background: rgba(163, 190, 140, 0.05);
+    border-bottom: 1px solid rgba(163, 190, 140, 0.1);
+    flex-shrink: 0;
+}
+
+/* ─── Scanning animation ─── */
+.scanningPulse {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}

@@ -1,0 +1,240 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, var(--color-text) 0%, var(--color-accent-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+}
+
+.consentBanner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: rgba(136, 192, 208, 0.08);
+    border: 1px solid rgba(136, 192, 208, 0.2);
+    border-radius: 12px;
+    color: var(--color-accent-blue);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.section {
+    background: var(--color-surface);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.section h2 {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.permissionGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.permissionCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: var(--color-bg);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+    border-radius: 12px;
+    transition: all 0.2s;
+}
+
+.permissionCard:hover {
+    border-color: rgba(136, 192, 208, 0.2);
+}
+
+.permInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.permIcon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.permIcon.club {
+    background: rgba(180, 142, 173, 0.15);
+    color: var(--color-purple);
+}
+
+.permIcon.lab {
+    background: rgba(136, 192, 208, 0.15);
+    color: var(--color-accent-blue);
+}
+
+.permIcon.service {
+    background: rgba(163, 190, 140, 0.15);
+    color: var(--color-accent-green);
+}
+
+.permDetails h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.15rem;
+}
+
+.permDetails p {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.permActions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.toggle {
+    width: 44px;
+    height: 24px;
+    border-radius: 12px;
+    background: var(--color-border);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: background 0.2s;
+}
+
+.toggle.on {
+    background: var(--color-accent-green);
+}
+
+.toggle::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: white;
+    top: 3px;
+    left: 3px;
+    transition: left 0.2s;
+}
+
+.toggle.on::after {
+    left: 23px;
+}
+
+.fraudGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.fraudAlert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background: var(--color-bg);
+    border: 1px solid rgba(136, 192, 208, 0.1);
+}
+
+.fraudAlert.safe {
+    border-left: 3px solid var(--color-accent-green);
+}
+
+.fraudAlert.warning {
+    border-left: 3px solid var(--color-warning);
+}
+
+.fraudAlert.danger {
+    border-left: 3px solid var(--color-danger);
+}
+
+.fraudInfo h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.fraudInfo p {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.fraudTime {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+}
+
+.consentLog {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.logItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--color-bg);
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+.logDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.logDot.granted {
+    background: var(--color-accent-green);
+}
+
+.logDot.revoked {
+    background: var(--color-danger);
+}
