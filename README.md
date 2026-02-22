@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="public/banner.png" alt="Arishadvarga Guardian Banner" width="100%"/>
-
 # 🛡️ Arishadvarga Guardian
 ### **Next-Gen AI-Powered Cybersecurity Platform for CyberSafe Campus**
 
@@ -25,8 +23,8 @@ We are a dedicated group of students from **CMRCET (Malla Reddy College of Engin
 | Role | Name | Campus |
 |------|------|--------|
 | **Team Lead / Dev** | [Krishna Koushik](https://github.com/krishnakoushik9) | CMRCET |
-| **Security Analyst** | KavyaSri (Potato)| CMRCET |
-| **UI/UX & Research** | Aishwarya (Aish) | CMRCET |
+| **Security Analyst** | KavyaSri | CMRCET |
+| **UI/UX & Research** | Aishwarya | CMRCET |
 
 ---
 
